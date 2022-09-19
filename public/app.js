@@ -10,46 +10,43 @@ const IssueRow = props => {
     style: props.rowStyle
   }, props.Id), /*#__PURE__*/React.createElement("td", {
     style: props.rowStyle
-  }, props.Title));
+  }, props.Title), /*#__PURE__*/React.createElement("td", {
+    style: props.rowStyle
+  }, props.Status), /*#__PURE__*/React.createElement("td", {
+    style: props.rowStyle
+  }, props.Owner), /*#__PURE__*/React.createElement("td", {
+    style: props.rowStyle
+  }, props.Created), /*#__PURE__*/React.createElement("td", {
+    style: props.rowStyle
+  }, props.Due));
 };
 
 const IssueTable = () => {
-  const rowStyle = {
-    border: "1px solid"
-  };
   const issues = [{
-    Id: 5,
-    Title: "This is the Fifth Issue"
+    Id: 1,
+    Status: "Assigned",
+    Owner: "Person-A",
+    Created: new Date("2022-09-01"),
+    Due: new Date("2022-09-05"),
+    Title: "This is the First Issue"
   }, {
-    Id: 6,
-    Title: "This is the Sixth Issue"
+    Id: 2,
+    Status: "Assigned",
+    Owner: "Person-B",
+    Created: new Date("2022-09-02"),
+    Due: new Date("2022-09-06"),
+    Title: "This is the Second Issue"
   }];
   const IssueRows = issues.map(issue => /*#__PURE__*/React.createElement(IssueRow, {
-    rowStyle: rowStyle,
+    key: issue.Id,
     Id: issue.Id,
+    Status: issue.Status,
+    Owner: issue.Owner,
+    Created: issue.Created.toDateString(),
+    Due: issue.Due.toDateString(),
     Title: issue.Title
   }));
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Issue Table"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
-    style: rowStyle
-  }, "ID"), /*#__PURE__*/React.createElement("th", {
-    style: rowStyle
-  }, "Title"))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
-    style: rowStyle
-  }, "1"), /*#__PURE__*/React.createElement("td", {
-    style: rowStyle
-  }, "This is First Issue")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
-    style: rowStyle
-  }, "2"), /*#__PURE__*/React.createElement("td", {
-    style: rowStyle
-  }, "This is First Issue")), /*#__PURE__*/React.createElement(IssueRow, {
-    rowStyle: rowStyle,
-    Id: 3,
-    Title: "This is Third issue"
-  }), /*#__PURE__*/React.createElement(IssueRow, {
-    rowStyle: rowStyle,
-    Id: 4,
-    Title: "This is Fourth issue"
-  }), IssueRows)));
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Issue Table"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Id"), /*#__PURE__*/React.createElement("th", null, "Status"), /*#__PURE__*/React.createElement("th", null, "Owner"), /*#__PURE__*/React.createElement("th", null, "Title"), /*#__PURE__*/React.createElement("th", null, "Created"), /*#__PURE__*/React.createElement("th", null, "Due"))), /*#__PURE__*/React.createElement("tbody", null, IssueRows)));
 };
 
 const AddIssue = () => {

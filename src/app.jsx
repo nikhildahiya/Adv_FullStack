@@ -1,49 +1,47 @@
 const IssueFilter = () => {
-  return <h1>Issue Filter</h1>
+  return <h1>Issue Filter</h1>;
 };
 
 const IssueRow = (props) => {
-  const rowStyle = { border: "1px solid"};
-  return(
+  const rowStyle = { border: "1px solid" };
+  return (
     <tr>
-              <td style={props.rowStyle}>{props.Id}</td>
-              <td style={props.rowStyle}>{props.Title}</td>
-          </tr>
-  )
-}
+      <td style={props.rowStyle}>{props.Id}</td>
+      <td style={props.rowStyle}>{props.Title}</td>
+      <td style={props.rowStyle}>{props.Status}</td>
+      <td style={props.rowStyle}>{props.Owner}</td>
+      <td style={props.rowStyle}>{props.Created}</td>
+      <td style={props.rowStyle}>{props.Due}</td>
+    </tr>
+  );
+};
 
 const IssueTable = () => {
-  const rowStyle = { border: "1px solid"};
   const issues = [
-    {Id: 5, Title: "This is the Fifth Issue"},
-    {Id: 6, Title: "This is the Sixth Issue"} ];
-  const IssueRows = issues.map(issue =>(
-      <IssueRow rowStyle = {rowStyle} Id={issue.Id} Title={issue.Title} />
-  ))
-  return <div>
-  <h1>Issue Table</h1>
-  <table>
-      <thead>
+    { Id: 1, Status:"Assigned", Owner:"Person-A", Created: new Date("2022-09-01"), Due: new Date("2022-09-05"), Title: "This is the First Issue" },
+    { Id: 2, Status:"Assigned", Owner:"Person-B", Created: new Date("2022-09-02"), Due: new Date("2022-09-06"), Title: "This is the Second Issue" },
+  ];
+  const IssueRows = issues.map((issue) => (
+    <IssueRow key={issue.Id} Id={issue.Id} Status={issue.Status} Owner={issue.Owner} Created={issue.Created.toDateString()} Due={issue.Due.toDateString()} Title={issue.Title} />
+  ));
+  return (
+    <div>
+      <h1>Issue Table</h1>
+      <table>
+        <thead>
           <tr>
-              <th style={rowStyle}>ID</th>
-              <th style={rowStyle}>Title</th>
+            <th >Id</th>
+            <th >Status</th>
+            <th>Owner</th>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Due</th>
           </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td style={rowStyle}>1</td>
-              <td style={rowStyle}>This is First Issue</td>
-          </tr>
-          <tr>
-            <td style={rowStyle}>2</td>
-            <td style={rowStyle}>This is First Issue</td>
-          </tr>
-          <IssueRow rowStyle = {rowStyle} Id={3} Title = {"This is Third issue"}/>
-          <IssueRow rowStyle = {rowStyle} Id={4} Title = {"This is Fourth issue"}/>
-          {IssueRows}
-          </tbody>
-        </table>
-      </div>
+        </thead>
+        <tbody>{IssueRows}</tbody>
+      </table>
+    </div>
+  );
 };
 
 const AddIssue = () => {
