@@ -22,7 +22,7 @@ const IssueRow = props => {
 };
 
 const IssueTable = () => {
-  const issues = [{
+  const tempIssues = [{
     Id: 1,
     Status: "Assigned",
     Owner: "Person-A",
@@ -37,6 +37,11 @@ const IssueTable = () => {
     Due: new Date("2022-09-06"),
     Title: "This is the Second Issue"
   }];
+  const [issues, setIssues] = React.useState([]);
+  setTimeout(() => {
+    setIssues(tempIssues);
+  }, 2000);
+  React.useEffect(() => {}, []);
   const IssueRows = issues.map(issue => /*#__PURE__*/React.createElement(IssueRow, {
     key: issue.Id,
     Id: issue.Id,

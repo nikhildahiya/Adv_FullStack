@@ -17,10 +17,23 @@ const IssueRow = (props) => {
 };
 
 const IssueTable = () => {
-  const issues = [
+
+  const tempIssues = [
     { Id: 1, Status:"Assigned", Owner:"Person-A", Created: new Date("2022-09-01"), Due: new Date("2022-09-05"), Title: "This is the First Issue" },
     { Id: 2, Status:"Assigned", Owner:"Person-B", Created: new Date("2022-09-02"), Due: new Date("2022-09-06"), Title: "This is the Second Issue" },
   ];
+
+  const [issues, setIssues] = React.useState([]);
+
+  setTimeout(()=>{
+    setIssues(tempIssues);
+  },2000)
+
+
+  React.useEffect(()=>{
+
+},[])
+
   const IssueRows = issues.map((issue) => (
     <IssueRow key={issue.Id} Id={issue.Id} Status={issue.Status} Owner={issue.Owner} Created={issue.Created.toDateString()} Due={issue.Due.toDateString()} Title={issue.Title} />
   ));
