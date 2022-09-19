@@ -41,7 +41,7 @@ const IssueTable = () => {
   setTimeout(() => {
     setIssues(tempIssues);
   }, 2000);
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {});
   const IssueRows = issues.map(issue => /*#__PURE__*/React.createElement(IssueRow, {
     key: issue.Id,
     Id: issue.Id,

@@ -30,9 +30,9 @@ const IssueTable = () => {
   },2000)
 
 
-  React.useEffect(()=>{
+  React.useEffect(()=> {
 
-},[])
+})
 
   const IssueRows = issues.map((issue) => (
     <IssueRow key={issue.Id} Id={issue.Id} Status={issue.Status} Owner={issue.Owner} Created={issue.Created.toDateString()} Due={issue.Due.toDateString()} Title={issue.Title} />
